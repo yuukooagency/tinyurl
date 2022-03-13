@@ -3,7 +3,7 @@
     "description": "A simple package for creating tiny urls.",
     "type": "library",
     "require": { 
-         "illuminate/support": "5.5.*|5.6.*|5.7.*,^8.12",
+         "illuminate/support": "5.5.*|5.6.*|5.7.*|^8.12",
          "php": "^7.0|^7.1|^7.2|^7.4"
     },
     "license": "MIT",
