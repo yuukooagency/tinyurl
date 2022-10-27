@@ -22,7 +22,7 @@ class TinyUrlServiceProvider extends ServiceProvider {
         
         $this->publishes([__DIR__ . '/../../config/tinyurls.php' => config_path('tinyurls.php') ], 'tinyurlconfig');
 
-        $this->publishes([__DIR__ . '/../database/migrations/' => database_path('migrations') ], 'tinyurlmigration');
+        $this->publishes([__DIR__ . '/../../migrations/' => database_path('migrations') ], 'tinyurlmigration');
 
         $this->app->bind('tinyurl', TinyUrls::class); // For Facades
         $this->loadRoutesFrom(__DIR__ . '/../../routes/tinyurlroutes.php');
