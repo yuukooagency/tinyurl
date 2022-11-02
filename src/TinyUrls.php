@@ -78,7 +78,7 @@ class TinyUrls {
     
     private function createUrl($path) {
     
-    	if (array_key_exists("SHORT_DOMAIN", config('tinyurls'))) {
+    	if (array_key_exists("SHORT_DOMAIN", config('tinyurls')) && !empty(config('tinyurls.SHORT_DOMAIN'))) {
     	
     	    if (is_string(config('tinyurls.SHORT_DOMAIN')) === false) {
     	        print "SHORT_DOMAIN should be a domain name";
