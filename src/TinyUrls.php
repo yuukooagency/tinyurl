@@ -25,12 +25,12 @@ class TinyUrls {
             $tinyCode = self::generateUniqueTinyCode(self::getMinLength());
             DB::table(self::getTableName())->insert([
             	'short_code' => $tinyCode, 
-            	'short_url' => url($this->url_prefix . '/' . $tinyCode) , 
+            	'short_url' => $this->createUrl($this->url_prefix . '/' . $tinyCode) , 
             	'long_url' => $url, 
             	'created_at' => date("Y-m-d H:i:s") , 
             	'updated_at' => date("Y-m-d H:i:s") 
             ]);
-            return url($this->url_prefix . '/' . $tinyCode);
+            return $this->createUrl($this->url_prefix . '/' . $tinyCode);
         }
         else {
 
@@ -74,6 +74,22 @@ class TinyUrls {
             print "TABLE key in file " . config_path('tinyurls') . " corrupted or can't fetch";
             exit;
         }
+    }
+    
+    private function createUrl($path) {
+    
+    	if (array_key_exists("SHORT_DOMAIN", config('tinyurls'))) {
+    	
+    	    if (is_string(config('tinyurls.SHORT_DOMAIN')) === false) {
+    	        print "SHORT_DOMAIN should be a domain name";
+                exit;
+    	    }
+    	    else {
+    	        return 'https://'.config('tinyurls.SHORT_DOMAIN').'/'.$path;
+    	    }    		
+    	} else {
+    	    return url($path);
+    	}
     }
 
     private function getMinLength() {
