@@ -3,7 +3,7 @@
     "description": "A simple package for creating tiny urls.",
     "type": "library",
     "require": { 
-         "php": "^7.0|^8.3"
+         "php": "*"
     },
     "license": "MIT",
     "authors": [
